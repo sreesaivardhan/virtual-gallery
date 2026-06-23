@@ -10,6 +10,7 @@ let appState = {
 
 const galleryContainer = document.getElementById('gallery-container');
 const filterContainer = document.getElementById('filter-container');
+const filmstripContainer = document.getElementById('filmstrip-container');
 const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImage');
 const modalTitle = document.getElementById('modalTitle');
@@ -27,12 +28,19 @@ document.addEventListener('DOMContentLoaded', async function () {
     const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
     
     // Check local storage for theme
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    if (currentTheme === 'dark') {
+    const currentTheme = localStorage.getItem('theme');
+    
+    if (currentTheme === 'dark' || currentTheme === null) {
         document.documentElement.setAttribute('data-theme', 'dark');
         if (themeIcon) {
             themeIcon.classList.remove('fa-moon');
             themeIcon.classList.add('fa-sun');
+        }
+    } else {
+        document.documentElement.removeAttribute('data-theme');
+        if (themeIcon) {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
         }
     }
 
@@ -72,7 +80,21 @@ document.addEventListener('DOMContentLoaded', async function () {
         await fetchData();
         renderFilters();
         renderGallery();
+        renderFilmstrip();
         attachModalEvents();
+        
+        // IG Card Logic
+        const igCard = document.getElementById('ig-card');
+        const closeIg = document.getElementById('close-ig');
+        if (igCard && closeIg) {
+            if (!localStorage.getItem('ig-dismissed')) {
+                igCard.classList.remove('hidden');
+            }
+            closeIg.addEventListener('click', function() {
+                igCard.classList.add('hidden');
+                localStorage.setItem('ig-dismissed', 'true');
+            });
+        }
     } catch (error) {
         console.error("Failed to load gallery data:", error);
     }
@@ -97,6 +119,17 @@ async function fetchData() {
     appState.photos.sort((a, b) => a.displayOrder - b.displayOrder);
 }
 
+function renderFilmstrip() {
+    if (!filmstripContainer) return;
+    filmstripContainer.innerHTML = '';
+    // Select a few premium photos for the filmstrip
+    const stripPhotos = appState.photos.slice(0, 7); 
+    stripPhotos.forEach(photo => {
+        const itemHtml = `<img src="${photo.thumbnail}" alt="${photo.title}" loading="lazy" class="filmstrip-img">`;
+        filmstripContainer.insertAdjacentHTML('beforeend', itemHtml);
+    });
+}
+
 function renderFilters() {
     if (!filterContainer) return;
     // "All Photos" is already in HTML, we just append the rest
@@ -115,6 +148,20 @@ function renderFilters() {
             btn.classList.add('active');
             appState.currentFilter = btn.getAttribute('data-filter');
             renderGallery();
+            
+            // Smooth scroll so the first gallery row is visible
+            setTimeout(() => {
+                const galleryGrid = document.getElementById('gallery-container');
+                if (galleryGrid) {
+                    const headerOffset = 100; // Leave breathing room above the grid
+                    const elementPosition = galleryGrid.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            }, 100);
         });
     });
 }
@@ -123,9 +170,31 @@ function renderGallery() {
     if (!galleryContainer) return;
     galleryContainer.innerHTML = '';
     
-    const filteredPhotos = appState.currentFilter === 'all' 
-        ? appState.photos 
-        : appState.photos.filter(p => p.collectionId === appState.currentFilter);
+    let filteredPhotos = [];
+    if (appState.currentFilter === 'all') {
+        const grouped = {};
+        appState.collections.forEach(c => grouped[c.slug] = []);
+        appState.photos.forEach(p => {
+            if (!grouped[p.collectionId]) grouped[p.collectionId] = [];
+            grouped[p.collectionId].push(p);
+        });
+        
+        let maxLen = 0;
+        const keys = Object.keys(grouped);
+        keys.forEach(k => {
+            if (grouped[k].length > maxLen) maxLen = grouped[k].length;
+        });
+        
+        for (let i = 0; i < maxLen; i++) {
+            keys.forEach(k => {
+                if (grouped[k][i]) {
+                    filteredPhotos.push(grouped[k][i]);
+                }
+            });
+        }
+    } else {
+        filteredPhotos = appState.photos.filter(p => p.collectionId === appState.currentFilter);
+    }
 
     // Keep track of currently displayed items for the modal navigation
     appState.currentItems = filteredPhotos;
@@ -134,8 +203,11 @@ function renderGallery() {
         const collection = appState.collections.find(c => c.slug === photo.collectionId);
         const collectionName = collection ? collection.name : photo.collectionId;
         
+        // Editorial hierarchy: Make specific index patterns span multiple columns
+        const spanClass = (index % 5 === 0) ? ' editorial-span' : '';
+        
         const itemHtml = `
-            <div class="gallery-item" data-category="${photo.collectionId}" data-index="${index}">
+            <div class="gallery-item${spanClass}" data-category="${photo.collectionId}" data-index="${index}">
                 <img src="${photo.thumbnail}" alt="${photo.title}" loading="lazy" data-full="${photo.fullImage}">
                 <div class="item-overlay">
                     <div class="item-info">

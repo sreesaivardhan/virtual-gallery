@@ -39,13 +39,15 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1 class="hero-title">LensLore</h1>
-            
-            <p style="max-width: 600px; margin: 0 auto; font-weight: 300;">A curated collection of visual stories capturing the delicate interplay of light, color, and emotion.</p>
+            <p class="hero-text">Visual journals documenting shifting skies, concrete cities, and the quiet spaces in between.</p>
             <button class="cta-button" onclick="scrollToGallery()">
                 <i class="fas fa-camera"></i> Explore Gallery
             </button>
         </div>
-        <div class="hero-background"></div>
+        <!-- Filmstrip Section inside Hero -->
+        <div class="hero-filmstrip" id="filmstrip-container">
+            <!-- Filmstrip items will be dynamically injected here -->
+        </div>
     </section>
 
     <!-- Gallery Section -->
@@ -127,6 +129,15 @@
     <div id="loading" class="loading">
         <div class="spinner"></div>
         <p>Loading Gallery...</p>
+    </div>
+
+    <!-- Instagram Floating Card -->
+    <div id="ig-card" class="ig-card hidden">
+        <button class="close-ig" id="close-ig" aria-label="Close">&times;</button>
+        <p class="ig-title">FOLLOW THE JOURNEY</p>
+        <p class="ig-desc">Every lens has its lore.<br>A space for my raw captures.</p>
+        <span class="ig-handle">@lens.lore__</span>
+        <a href="https://www.instagram.com/lens.lore__?igsh=YTZ1c3J4cm5lMGx5" target="_blank" class="ig-link">View Instagram &rarr;</a>
     </div>
 
     <!-- Footer -->
