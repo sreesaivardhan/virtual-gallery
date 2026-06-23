@@ -3,6 +3,8 @@
     "id": "sky-symphony",
     "name": "Sky Symphony",
     "slug": "sky-symphony",
+    "description": "Changing skies captured across seasons, storms, sunsets, and quiet mornings.",
+    "shortDescription": "Atmospheric studies of the shifting sky.",
     "featured": true,
     "displayOrder": 1
   },
@@ -10,6 +12,8 @@
     "id": "urban-poetry",
     "name": "Urban Poetry",
     "slug": "urban-poetry",
+    "description": "Stories hidden inside concrete, light, structure, and movement.",
+    "shortDescription": "The silent narratives of city life.",
     "featured": true,
     "displayOrder": 2
   },
@@ -17,6 +21,8 @@
     "id": "light-shadow-tales",
     "name": "Light & Shadow Tales",
     "slug": "light-shadow-tales",
+    "description": "Explorations of contrast, where harsh light carves out deep, defining shadows.",
+    "shortDescription": "High contrast studies in light.",
     "featured": true,
     "displayOrder": 3
   },
@@ -24,6 +30,8 @@
     "id": "natures-whispers",
     "name": "Nature's Whispers",
     "slug": "natures-whispers",
+    "description": "Quiet moments found in the natural world, from subtle streams to heavy storms.",
+    "shortDescription": "Observations of the natural world.",
     "featured": true,
     "displayOrder": 4
   },
@@ -31,6 +39,8 @@
     "id": "emotional-hues",
     "name": "Emotional Hues",
     "slug": "emotional-hues",
+    "description": "Colors and compositions that evoke a specific feeling, tension, or mood.",
+    "shortDescription": "Mood-driven color photography.",
     "featured": true,
     "displayOrder": 5
   }

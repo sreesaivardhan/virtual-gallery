@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LensLore | Premium Photography Portfolio</title>
-    <meta name="description" content="Explore LensLore, a curated virtual photography gallery featuring captivating visual stories across nature, urban life, and emotional hues.">
+    <meta name="description"
+        content="Explore LensLore, a curated virtual photography gallery featuring captivating visual stories across nature, urban life, and emotional hues.">
     <meta property="og:title" content="LensLore | Premium Photography Portfolio">
     <meta property="og:description" content="Explore LensLore, a curated virtual photography gallery.">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Navigation Header -->
     <header class="navbar">
@@ -24,7 +29,9 @@
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#gallery" class="nav-link">Gallery</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
-                    <li><button id="theme-toggle" class="nav-link" aria-label="Toggle Theme" style="background:none;border:none;cursor:pointer;font-size:1rem;"><i class="fas fa-moon"></i></button></li>
+                    <li><button id="theme-toggle" class="nav-link" aria-label="Toggle Theme"
+                            style="background:none;border:none;cursor:pointer;font-size:1rem;"><i
+                                class="fas fa-moon"></i></button></li>
                 </ul>
             </nav>
             <div class="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
@@ -39,7 +46,8 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1 class="hero-title">LensLore</h1>
-            <p class="hero-text">Visual journals documenting shifting skies, concrete cities, and the quiet spaces in between.</p>
+            <p class="hero-text">Visual journals documenting shifting skies, concrete cities, and the quiet spaces in
+                between.</p>
             <button class="cta-button" onclick="scrollToGallery()">
                 <i class="fas fa-camera"></i> Explore Gallery
             </button>
@@ -53,8 +61,11 @@
     <!-- Gallery Section -->
     <section id="gallery" class="gallery-section">
         <div class="container">
-            <h2 class="section-title">Photography Collections</h2>
-            
+            <!-- Collection Showcase -->
+            <div class="collection-showcase" id="collection-showcase">
+                <!-- Collection cards will be dynamically injected here -->
+            </div>
+
             <!-- Category Filter Buttons -->
             <div class="filter-buttons" id="filter-container">
                 <button class="filter-btn active" data-filter="all">All Photos</button>
@@ -72,38 +83,19 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>About the Photographer</h2>
-                    <p>Welcome to my virtual photography gallery. Through my lens, I capture the poetry of everyday moments, the symphony of skies, and the whispers of nature. Each photograph tells a story, evoking emotions and memories that transcend the boundaries of time and space.</p>
-                    <p>This collection represents my journey as a photographer, exploring different themes and emotions through visual storytelling. From urban landscapes to natural wonders, each category offers a unique perspective on the world around us.</p>
-                    <p>From the celestial whispers of the sky to the vibrant rhythm of urban life, each image invites you to pause, reflect, and connect with the world in a deeper way.</p>
-                    <p class="image-caption">Our Vision</p>
-                    <p>To inspire and evoke wonder through visuals that blend art and emotion, turning fleeting moments into timeless stories.</p>
-                <p class="image-caption">Explore Our Themes</p>
-                <ul>
-                    <li><strong>Sky Symphony:</strong> The changing moods of the heavens.</li>
-                    <li><strong>Urban Poetry:</strong> Stories amidst cityscapes.</li>
-                    <li><strong>Light & Shadow Tales:</strong> Drama in contrast.</li>
-                    <li><strong>Nature’s Whispers:</strong> Earth’s serene beauty.</li>
-                    <li><strong>Emotional Hues:</strong> Colors that speak to the heart.</li>
-                </ul>
-                <p>Step in, and let your imagination wander through frames that resonate and inspire.</p>
-            </div>
-            <div class="about-stats">
-                <div class="stat">
-                    <p class="image-caption">5</p>
-                    <p>Collections</p>
+                    <h2>LensLore</h2>
+                    <p>A personal visual journal documenting weather, changing skies, urban spaces, and moments that
+                        would otherwise pass unnoticed.</p>
+                    <p>Built and maintained as an evolving archive of observations captured through a mobile lens.</p>
+                    <p>What began as casual photography gradually became a way to preserve moods, seasons, and places.
+                    </p>
                 </div>
-                <div class="stat">
-                    <p class="image-caption">20</p>
-                    <p>Photographs</p>
-                </div>
-                <div class="stat">
-                    <p class="image-caption">3+</p>
-                    <p>Years Experience</p>
+                <div class="about-stats" id="dynamic-stats">
+                    <!-- Dynamic stats will be injected here -->
                 </div>
             </div>
         </div>
-</section>
+    </section>
 
 
     <!-- Image Modal -->
@@ -118,7 +110,7 @@
                     <p id="modalCategory" class="modal-category"></p>
                     <h3 id="modalTitle" class="modal-title"></h3>
                     <p id="modalStory" class="modal-story"></p>
-                    
+
                     <div class="modal-metadata">
                         <div class="meta-item">
                             <span class="meta-label"><i class="fa-solid fa-location-dot"></i> LOCATION</span>
@@ -136,8 +128,10 @@
                 </div>
             </div>
             <div class="modal-navigation">
-                <button id="prevBtn" class="nav-btn" aria-label="Previous Image"><i class="fas fa-chevron-left"></i></button>
-                <button id="nextBtn" class="nav-btn" aria-label="Next Image"><i class="fas fa-chevron-right"></i></button>
+                <button id="prevBtn" class="nav-btn" aria-label="Previous Image"><i
+                        class="fas fa-chevron-left"></i></button>
+                <button id="nextBtn" class="nav-btn" aria-label="Next Image"><i
+                        class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </div>
@@ -154,7 +148,8 @@
         <p class="ig-title">FOLLOW THE JOURNEY</p>
         <p class="ig-desc">Every lens has its lore.<br>A space for my raw captures.</p>
         <span class="ig-handle">@lens.lore__</span>
-        <a href="https://www.instagram.com/lens.lore__?igsh=YTZ1c3J4cm5lMGx5" target="_blank" class="ig-link">View Instagram &rarr;</a>
+        <a href="https://www.instagram.com/lens.lore__?igsh=YTZ1c3J4cm5lMGx5" target="_blank" class="ig-link">View
+            Instagram &rarr;</a>
     </div>
 
     <!-- Footer -->
@@ -162,8 +157,9 @@
         <div class="container">
             <p>&copy; 2025 Virtual Photography Gallery. All rights reserved.</p>
             <div class="social-links">
-                <a href="https://www.instagram.com/lens.lore__?igsh=YTZ1c3J4cm5lMGx5" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-instagram"></i> 
+                <a href="https://www.instagram.com/lens.lore__?igsh=YTZ1c3J4cm5lMGx5" target="_blank"
+                    rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
                     Follow me
                 </a>
             </div>
@@ -173,4 +169,5 @@
     <!-- JavaScript -->
     <script src="js/script.js"></script>
 </body>
+
 </html>

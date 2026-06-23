@@ -81,9 +81,11 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     try {
         await fetchData();
+        renderShowcase();
         renderFilters();
         renderGallery();
         renderFilmstrip();
+        renderStats();
         attachModalEvents();
         
         // Use event delegation for gallery items to prevent listener duplication/mismatch bugs
@@ -153,6 +155,41 @@ function renderFilmstrip() {
     `;
 }
 
+function renderShowcase() {
+    const showcaseContainer = document.getElementById('collection-showcase');
+    if (!showcaseContainer) return;
+    showcaseContainer.innerHTML = '';
+    
+    appState.collections.forEach(collection => {
+        const photoCount = appState.photos.filter(p => p.collectionId === collection.slug).length;
+        
+        const cardHtml = `
+            <div class="showcase-card" data-filter="${collection.slug}">
+                <div class="showcase-content">
+                    <h3 class="showcase-title">${collection.name}</h3>
+                    <p class="showcase-desc">${collection.shortDescription || collection.description || ''}</p>
+                </div>
+                <div class="showcase-meta">
+                    <span class="showcase-count">${photoCount} Photographs</span>
+                    <span class="showcase-arrow">&rarr;</span>
+                </div>
+            </div>
+        `;
+        showcaseContainer.insertAdjacentHTML('beforeend', cardHtml);
+    });
+
+    const cards = showcaseContainer.querySelectorAll('.showcase-card');
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            const filterId = this.getAttribute('data-filter');
+            const filterBtn = document.querySelector(`.filter-btn[data-filter="${filterId}"]`);
+            if (filterBtn) {
+                filterBtn.click();
+            }
+        });
+    });
+}
+
 function renderFilters() {
     if (!filterContainer) return;
     // "All Photos" is already in HTML, we just append the rest
@@ -187,6 +224,45 @@ function renderFilters() {
             }, 100);
         });
     });
+}
+
+function renderStats() {
+    const statsContainer = document.getElementById('dynamic-stats');
+    if (!statsContainer) return;
+    
+    const photoCount = appState.photos.length;
+    const collectionCount = appState.collections.length;
+    
+    const locations = new Set();
+    const years = new Set();
+    
+    appState.photos.forEach(p => {
+        if (p.location) locations.add(p.location);
+        if (p.dateCaptured) {
+            const yearMatch = p.dateCaptured.match(/\d{4}/);
+            if (yearMatch) years.add(yearMatch[0]);
+        }
+    });
+    
+    const statsHtml = `
+        <div class="stat-item">
+            <span class="stat-value">${photoCount}</span>
+            <span class="stat-label">PHOTOGRAPHS</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-value">${collectionCount}</span>
+            <span class="stat-label">COLLECTIONS</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-value">${locations.size}</span>
+            <span class="stat-label">LOCATIONS</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-value">${years.size}</span>
+            <span class="stat-label">YEARS CAPTURED</span>
+        </div>
+    `;
+    statsContainer.innerHTML = statsHtml;
 }
 
 function renderGallery() {
