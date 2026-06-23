@@ -22,7 +22,6 @@ const modalTags = document.getElementById('modalTags');
 const closeBtn = document.querySelector('.modal .close');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
-const loading = document.getElementById('loading');
 
 document.addEventListener('DOMContentLoaded', async function () {
 
@@ -71,6 +70,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         hamburger.addEventListener('click', function () {
             navMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
+            const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !expanded);
         });
     }
 
@@ -116,10 +117,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
-// Hide loading spinner after all assets (including images) are loaded
-window.addEventListener('load', function() {
-    if (loading) loading.style.display = 'none';
-});
 
 async function fetchData() {
     const [collectionsRes, photosRes] = await Promise.all([
