@@ -141,7 +141,7 @@ function renderGallery() {
                     <div class="item-info">
                         <p class="image-caption">${photo.caption}</p>
                         <p class="image-category">${collectionName}</p>
-                        <button class="view-btn" aria-label="View Image"><i class="fas fa-eye"></i></button>
+                        
                     </div>
                 </div>
             </div>
@@ -150,10 +150,9 @@ function renderGallery() {
     });
 
     // Re-attach view button events for newly rendered items
-    document.querySelectorAll('.view-btn').forEach((btn) => {
-        btn.addEventListener('click', function (e) {
-            const itemEl = btn.closest('.gallery-item');
-            const index = parseInt(itemEl.getAttribute('data-index'), 10);
+    document.querySelectorAll('.gallery-item').forEach((item) => {
+        item.addEventListener('click', function (e) {
+            const index = parseInt(item.getAttribute('data-index'), 10);
             openModal(index);
         });
     });
