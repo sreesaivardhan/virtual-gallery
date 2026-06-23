@@ -112,8 +112,21 @@ document.addEventListener('DOMContentLoaded', async function () {
                 localStorage.setItem('ig-dismissed', 'true');
             });
         }
+        // Remove loader once everything is rendered successfully
+        const loadingEl = document.getElementById('loading');
+        if (loadingEl) {
+            loadingEl.classList.add('hidden');
+            setTimeout(() => {
+                loadingEl.remove();
+            }, 500);
+        }
+
     } catch (error) {
         console.error("Failed to load gallery data:", error);
+        const loadingEl = document.getElementById('loading');
+        if (loadingEl) {
+            loadingEl.innerHTML = '<p>Unable to load gallery.</p>';
+        }
     }
 });
 
