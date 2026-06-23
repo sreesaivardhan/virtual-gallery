@@ -1,3 +1,37 @@
 [
-  // Future migration: Move all collection objects here to decouple data from index.html
+  {
+    "id": "sky-symphony",
+    "name": "Sky Symphony",
+    "slug": "sky-symphony",
+    "featured": true,
+    "displayOrder": 1
+  },
+  {
+    "id": "urban-poetry",
+    "name": "Urban Poetry",
+    "slug": "urban-poetry",
+    "featured": true,
+    "displayOrder": 2
+  },
+  {
+    "id": "light-shadow-tales",
+    "name": "Light & Shadow Tales",
+    "slug": "light-shadow-tales",
+    "featured": true,
+    "displayOrder": 3
+  },
+  {
+    "id": "natures-whispers",
+    "name": "Nature's Whispers",
+    "slug": "natures-whispers",
+    "featured": true,
+    "displayOrder": 4
+  },
+  {
+    "id": "emotional-hues",
+    "name": "Emotional Hues",
+    "slug": "emotional-hues",
+    "featured": true,
+    "displayOrder": 5
+  }
 ]

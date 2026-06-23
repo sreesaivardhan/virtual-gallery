@@ -1,3 +1,202 @@
 [
-  // Future migration: Move all photo objects here to decouple data from index.html
+  {
+    "id": "sky-01",
+    "title": "Sky Symphony 1",
+    "caption": "Night casts its net, yet the smallest tear promises an escape.",
+    "collectionId": "sky-symphony",
+    "thumbnail": "images/thumbnails/sky-symphony/sky-01.png",
+    "fullImage": "images/full-size/sky-symphony/sky-01.png",
+    "featured": false,
+    "displayOrder": 1
+  },
+  {
+    "id": "sky-02",
+    "title": "Sky Symphony 2",
+    "caption": "clean clouds Serenity, clear without impurities like new borns.",
+    "collectionId": "sky-symphony",
+    "thumbnail": "images/thumbnails/sky-symphony/sky-02.png",
+    "fullImage": "images/full-size/sky-symphony/sky-02.png",
+    "featured": false,
+    "displayOrder": 2
+  },
+  {
+    "id": "sky-03",
+    "title": "Sky Symphony 3",
+    "caption": "Midday Magic:In the heart of the day, light dances to nature’s rhythm.",
+    "collectionId": "sky-symphony",
+    "thumbnail": "images/thumbnails/sky-symphony/sky-03.png",
+    "fullImage": "images/full-size/sky-symphony/sky-03.png",
+    "featured": false,
+    "displayOrder": 3
+  },
+  {
+    "id": "sky-04",
+    "title": "Sky Symphony 4",
+    "caption": "The heart of India soars high, wrapped in colors of courage, peace, and faith.",
+    "collectionId": "sky-symphony",
+    "thumbnail": "images/thumbnails/sky-symphony/sky-04.png",
+    "fullImage": "images/full-size/sky-symphony/sky-04.png",
+    "featured": false,
+    "displayOrder": 4
+  },
+  {
+    "id": "urban-01",
+    "title": "Urban Poetry 1",
+    "caption": "A monochrome mosaic of movement, where the stillness of steel contrasts the rush of humanity.",
+    "collectionId": "urban-poetry",
+    "thumbnail": "images/thumbnails/urban-poetry/urban-01.png",
+    "fullImage": "images/full-size/urban-poetry/urban-01.png",
+    "featured": false,
+    "displayOrder": 5
+  },
+  {
+    "id": "urban-02",
+    "title": "Urban Poetry 2",
+    "caption": "Between walls and whispers, the city forgets its yesterdays, chasing tomorrows under an indifferent sky.",
+    "collectionId": "urban-poetry",
+    "thumbnail": "images/thumbnails/urban-poetry/urban-02.png",
+    "fullImage": "images/full-size/urban-poetry/urban-02.png",
+    "featured": false,
+    "displayOrder": 6
+  },
+  {
+    "id": "urban-03",
+    "title": "Urban Poetry 3",
+    "caption": "Where branches meet the glow, the night finds its poetry.",
+    "collectionId": "urban-poetry",
+    "thumbnail": "images/thumbnails/urban-poetry/urban-03.png",
+    "fullImage": "images/full-size/urban-poetry/urban-03.png",
+    "featured": false,
+    "displayOrder": 7
+  },
+  {
+    "id": "urban-04",
+    "title": "Urban Poetry 4",
+    "caption": "In the tangled poetry of wires and sky, the city breathes, and dreams fly by.",
+    "collectionId": "urban-poetry",
+    "thumbnail": "images/thumbnails/urban-poetry/urban-04.png",
+    "fullImage": "images/full-size/urban-poetry/urban-04.png",
+    "featured": false,
+    "displayOrder": 8
+  },
+  {
+    "id": "light-01",
+    "title": "Light & Shadow 1",
+    "caption": "Distorted reflections ripple beneath the power lines, mirroring the weight of unspoken words.",
+    "collectionId": "light-shadow-tales",
+    "thumbnail": "images/thumbnails/light-shadow-tales/light-01.png",
+    "fullImage": "images/full-size/light-shadow-tales/light-01.png",
+    "featured": false,
+    "displayOrder": 9
+  },
+  {
+    "id": "light-02",
+    "title": "Light & Shadow 2",
+    "caption": "The heavens roared as the flame burned its mark forever.",
+    "collectionId": "light-shadow-tales",
+    "thumbnail": "images/thumbnails/light-shadow-tales/light-02.png",
+    "fullImage": "images/full-size/light-shadow-tales/light-02.png",
+    "featured": false,
+    "displayOrder": 10
+  },
+  {
+    "id": "light-03",
+    "title": "Light & Shadow 3",
+    "caption": "Between the beams and the sky, lies a promise to return.",
+    "collectionId": "light-shadow-tales",
+    "thumbnail": "images/thumbnails/light-shadow-tales/light-03.png",
+    "fullImage": "images/full-size/light-shadow-tales/light-03.png",
+    "featured": false,
+    "displayOrder": 11
+  },
+  {
+    "id": "light-04",
+    "title": "Light & Shadow 4",
+    "caption": "The sun weaves its magic as clouds bow away.",
+    "collectionId": "light-shadow-tales",
+    "thumbnail": "images/thumbnails/light-shadow-tales/light-04.png",
+    "fullImage": "images/full-size/light-shadow-tales/light-04.png",
+    "featured": false,
+    "displayOrder": 12
+  },
+  {
+    "id": "nature-01",
+    "title": "Nature's Whispers 1",
+    "caption": "the purple hue, the world feels a little heavier.",
+    "collectionId": "natures-whispers",
+    "thumbnail": "images/thumbnails/natures-whispers/nature-01.png",
+    "fullImage": "images/full-size/natures-whispers/nature-01.png",
+    "featured": false,
+    "displayOrder": 13
+  },
+  {
+    "id": "nature-02",
+    "title": "Nature's Whispers 2",
+    "caption": "The bridge connects not just shores, but moments like this.",
+    "collectionId": "natures-whispers",
+    "thumbnail": "images/thumbnails/natures-whispers/nature-02.png",
+    "fullImage": "images/full-size/natures-whispers/nature-02.png",
+    "featured": false,
+    "displayOrder": 14
+  },
+  {
+    "id": "nature-03",
+    "title": "Nature's Whispers 3",
+    "caption": "Illuminated chaos, raw power.",
+    "collectionId": "natures-whispers",
+    "thumbnail": "images/thumbnails/natures-whispers/nature-03.png",
+    "fullImage": "images/full-size/natures-whispers/nature-03.png",
+    "featured": false,
+    "displayOrder": 15
+  },
+  {
+    "id": "nature-04",
+    "title": "Nature's Whispers 4",
+    "caption": "The journey lingers, wrapped in the colors of the falling sun.",
+    "collectionId": "natures-whispers",
+    "thumbnail": "images/thumbnails/natures-whispers/nature-04.png",
+    "fullImage": "images/full-size/natures-whispers/nature-04.png",
+    "featured": false,
+    "displayOrder": 16
+  },
+  {
+    "id": "emotion-01",
+    "title": "Emotional Hues 1",
+    "caption": "The golden light fades, carrying a sense of belonging to a new chapter.",
+    "collectionId": "emotional-hues",
+    "thumbnail": "images/thumbnails/emotional-hues/emotion-01.png",
+    "fullImage": "images/full-size/emotional-hues/emotion-01.png",
+    "featured": false,
+    "displayOrder": 17
+  },
+  {
+    "id": "emotion-02",
+    "title": "Emotional Hues 2",
+    "caption": "The blue whispers serenity, the orange screams passion, and together they teach us balance - a masterpiece of contrasts.",
+    "collectionId": "emotional-hues",
+    "thumbnail": "images/thumbnails/emotional-hues/emotion-02.png",
+    "fullImage": "images/full-size/emotional-hues/emotion-02.png",
+    "featured": false,
+    "displayOrder": 18
+  },
+  {
+    "id": "emotion-03",
+    "title": "Emotional Hues 3",
+    "caption": "Every sunset has a story - this one is untamed.",
+    "collectionId": "emotional-hues",
+    "thumbnail": "images/thumbnails/emotional-hues/emotion-03.png",
+    "fullImage": "images/full-size/emotional-hues/emotion-03.png",
+    "featured": false,
+    "displayOrder": 19
+  },
+  {
+    "id": "emotion-04",
+    "title": "Emotional Hues 4",
+    "caption": "Each glow knows its breaking point - push too hard, and even warmth turns to shadow.",
+    "collectionId": "emotional-hues",
+    "thumbnail": "images/thumbnails/emotional-hues/emotion-04.png",
+    "fullImage": "images/full-size/emotional-hues/emotion-04.png",
+    "featured": false,
+    "displayOrder": 20
+  }
 ]
