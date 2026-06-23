@@ -50,8 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const img = item.querySelector('img');
         modalImg.src = img.getAttribute('data-full') || img.src;
         modalTitle.textContent = img.alt;
-        modalCategory.textContent = item.getAttribute('data-category').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        const desc = item.querySelector('h3');
+        const category = item.querySelector('.image-category');
+        modalCategory.textContent = category ? category.textContent : '';
+        const desc = item.querySelector('.image-caption');
         modalDescription.textContent = desc ? desc.textContent : '';
     }
 
@@ -102,7 +103,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Hide loading spinner after DOM is loaded
-    const loading = document.getElementById('loading');
-    if (loading) loading.style.display = 'none';
+    // Hide loading spinner after all assets (including images) are loaded
+    window.addEventListener('load', function() {
+        const loading = document.getElementById('loading');
+        if (loading) loading.style.display = 'none';
+    });
 });
