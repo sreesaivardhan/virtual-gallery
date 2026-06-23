@@ -110,12 +110,29 @@
     <div id="imageModal" class="modal">
         <div class="modal-content">
             <span class="close" aria-label="Close Modal" role="button" tabindex="0">&times;</span>
-            <img id="modalImage" src="" alt="">
-            <div class="modal-info">
-                <h3 id="modalTitle"></h3>
-                <p id="modalCategory"></p>
-                <div class="modal-description">
-                    <p id="modalDescription"></p>
+            <div class="modal-layout">
+                <div class="modal-image-col">
+                    <img id="modalImage" src="" alt="">
+                </div>
+                <div class="modal-info-col">
+                    <p id="modalCategory" class="modal-category"></p>
+                    <h3 id="modalTitle" class="modal-title"></h3>
+                    <p id="modalStory" class="modal-story"></p>
+                    
+                    <div class="modal-metadata">
+                        <div class="meta-item">
+                            <span class="meta-label"><i class="fa-solid fa-location-dot"></i> LOCATION</span>
+                            <a id="modalLocation" href="#" target="_blank" class="meta-value meta-link"></a>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label"><i class="fa-solid fa-calendar-days"></i> DATE</span>
+                            <span id="modalDate" class="meta-value"></span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label"><i class="fa-solid fa-tag"></i> TAGS</span>
+                            <span id="modalTags" class="meta-value"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-navigation">

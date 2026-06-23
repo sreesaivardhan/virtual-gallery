@@ -15,7 +15,10 @@ const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImage');
 const modalTitle = document.getElementById('modalTitle');
 const modalCategory = document.getElementById('modalCategory');
-const modalDescription = document.getElementById('modalDescription');
+const modalStory = document.getElementById('modalStory');
+const modalLocation = document.getElementById('modalLocation');
+const modalDate = document.getElementById('modalDate');
+const modalTags = document.getElementById('modalTags');
 const closeBtn = document.querySelector('.modal .close');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
@@ -83,6 +86,17 @@ document.addEventListener('DOMContentLoaded', async function () {
         renderFilmstrip();
         attachModalEvents();
         
+        // Use event delegation for gallery items to prevent listener duplication/mismatch bugs
+        if (galleryContainer) {
+            galleryContainer.addEventListener('click', function(e) {
+                const item = e.target.closest('.gallery-item');
+                if (item) {
+                    const index = parseInt(item.getAttribute('data-index'), 10);
+                    openModal(index);
+                }
+            });
+        }
+        
         // IG Card Logic
         const igCard = document.getElementById('ig-card');
         const closeIg = document.getElementById('close-ig');
@@ -124,10 +138,19 @@ function renderFilmstrip() {
     filmstripContainer.innerHTML = '';
     // Select a few premium photos for the filmstrip
     const stripPhotos = appState.photos.slice(0, 7); 
+    
+    let innerHtml = '';
     stripPhotos.forEach(photo => {
-        const itemHtml = `<img src="${photo.thumbnail}" alt="${photo.title}" loading="lazy" class="filmstrip-img">`;
-        filmstripContainer.insertAdjacentHTML('beforeend', itemHtml);
+        innerHtml += `<img src="${photo.thumbnail}" alt="${photo.title}" loading="lazy" class="filmstrip-img">`;
     });
+    
+    // Duplicate the content to create a seamless infinite loop
+    filmstripContainer.innerHTML = `
+        <div class="filmstrip-track">
+            ${innerHtml}
+            ${innerHtml}
+        </div>
+    `;
 }
 
 function renderFilters() {
@@ -211,7 +234,7 @@ function renderGallery() {
                 <img src="${photo.thumbnail}" alt="${photo.title}" loading="lazy" data-full="${photo.fullImage}">
                 <div class="item-overlay">
                     <div class="item-info">
-                        <p class="image-caption">${photo.caption}</p>
+                        <p class="image-caption">${photo.title}</p>
                         <p class="image-category">${collectionName}</p>
                         
                     </div>
@@ -221,13 +244,7 @@ function renderGallery() {
         galleryContainer.insertAdjacentHTML('beforeend', itemHtml);
     });
 
-    // Re-attach view button events for newly rendered items
-    document.querySelectorAll('.gallery-item').forEach((item) => {
-        item.addEventListener('click', function (e) {
-            const index = parseInt(item.getAttribute('data-index'), 10);
-            openModal(index);
-        });
-    });
+    // Event listener for opening modal is handled via delegation in DOMContentLoaded
 }
 
 function updateModal(index) {
@@ -239,7 +256,21 @@ function updateModal(index) {
     modalImg.src = photo.fullImage;
     modalTitle.textContent = photo.title;
     modalCategory.textContent = collection ? collection.name : photo.collectionId;
-    modalDescription.textContent = photo.caption;
+    
+    if(modalStory) modalStory.textContent = photo.story || "";
+    
+    if(modalLocation) {
+        if(photo.location) {
+            modalLocation.textContent = photo.location;
+            modalLocation.href = photo.mapUrl || "#";
+        } else {
+            modalLocation.textContent = "Unknown";
+            modalLocation.removeAttribute('href');
+        }
+    }
+    
+    if(modalDate) modalDate.textContent = photo.dateCaptured || "Unknown";
+    if(modalTags) modalTags.textContent = photo.tags ? photo.tags.join(" · ") : "";
 }
 
 function openModal(index) {
